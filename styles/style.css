@@ -9,45 +9,6 @@ html {
 }
 
 .page {
-  margin: auto;
-  color: #fff;
-  font-family: "Fira Sans Condensed", sans-serif;
-  font-size: 18px;
-  background-color: #1b1919;
-  inline-size: 1200px;
-  block-size: 100%;
-}
-
-h1,
-h2,
-h3,
-h4,
-p,
-ul,
-ol,
-li,
-blockquote,
-fieldset {
-  margin: 0;
-  padding: 0;
-}
-
-ul,
-ol {
-  list-style: none;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html {
-  block-size: 100%;
-}
-
-.page {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -151,7 +112,7 @@ ol {
 }
 
 .title {
-  font-family: Oswald;
+  font-family: Oswald, "Fira Sans Condensed", sans-serif;
   font-weight: 700;
   font-size: 75px;
   font-style: normal;
@@ -167,17 +128,20 @@ ol {
 }
 
 .content__video-card-title {
-  font-family: Oswald;
+  font-family: Oswald, "Fira Sans Condensed", sans-serif;
   font-weight: 700;
   font-size: 30px;
   font-style: normal;
   line-height: 100%; /* 30px */
   text-transform: uppercase;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .content__video-card-description {
   color: #fff;
-  font-family: "Fira Sans Condensed";
+  font-family: "Fira Sans Condensed", sans-serif;
   font-weight: 400;
   font-size: 18px;
   font-style: normal;
@@ -203,7 +167,7 @@ ol {
   margin-bottom: 5px;
   border: none;
   color: #fff;
-  font-family: "Fira Sans Condensed";
+  font-family: "Fira Sans Condensed", sans-serif;
   font-weight: 400;
   font-size: 18px;
   font-style: normal;
@@ -217,7 +181,7 @@ ol {
   border-block-start: 1px solid #fff;
   border-block-end: 1px solid #fff;
   color: #fff;
-  font-family: "Fira Sans Condensed";
+  font-family: "Fira Sans Condensed", sans-serif;
   font-weight: 400;
   font-size: 18px;
   font-style: normal;
@@ -234,7 +198,7 @@ ol {
   cursor: pointer; /* Подгоняем ширину под размер содержимого */
 }
 
-search-form__textfield :focus {
+search-form__textfield:focus {
   box-shadow: none;
   outline: none;
 }
@@ -244,11 +208,19 @@ search-form__textfield :focus {
 }
 
 .search-form__label:has(.search-form__textfield:focus-visible) {
-  outline: 1px solid currentColor; /* Замените цвет границы на нужный */
+  outline: 1px solid white; /* Замените цвет границы на нужный */
 }
 
-.search-form__label:hover .search-form__label-text {
+.search-form__label:has(:focus-visible) {
+  outline: 1px solid currentColor;
+}
+
+.search-form__label:hover .search-form__label {
   text-decoration: underline;
+}
+
+.search-form .search-form__textfield:focus-visible {
+  outline: 1px solid currentColor;
 }
 
 .search-form__checkbox-list {
@@ -264,6 +236,7 @@ search-form__textfield :focus {
   font-style: normal;
   line-height: normal;
   appearance: none;
+  text-decoration: underline;
 }
 
 .search-form__pseudo-checkbox {
@@ -289,7 +262,7 @@ search-form__textfield :focus {
   align-items: center;
   border: 1px solid #fff;
   color: #fff;
-  font-family: "Fira Sans Condensed";
+  font-family: "Fira Sans Condensed", sans-serif;
   font-weight: 700;
   font-size: 18px;
   font-style: normal;
@@ -320,23 +293,22 @@ search-form__textfield :focus {
   height: 34px;
 }
 
-button:focus {
+.button:focus {
   outline: none;
 }
 
 /* Стили для состояний :hover, :active и :focus-visible */
 
-button:hover {
-  opacity: 0.8;
+.button:hover {
   text-decoration: underline;
   cursor: pointer;
 }
 
-button:active {
-  transform: scale(0.95);
+.button:active {
+  border-color: #545050;
 }
 
-button:focus-visible {
+.button:focus-visible {
   box-shadow: 0 0 0 2px white;
 }
 
@@ -344,10 +316,7 @@ button:focus-visible {
 
 /* Стили для активной карточки */
 
-.content__card-link_current {
-  background-color: #545050;
-}
-
+.content__card-link_current,
 .content__card-link:active {
   background-color: #545050;
 }
